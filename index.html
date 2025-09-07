@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erick Zaratini - Portfólio Profissional</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-purple: #a855f7;
+      --neon-blue: #00d9ff;
+      --neon-green: #00ff7f;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0e1a;
+      --card-bg: rgba(30, 41, 59, 0.9);
+      --text-color: #e2e8f0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: var(--dark-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Background personalizado */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        /* Gradiente escuro de fundo */
+        linear-gradient(to bottom, var(--darker-bg), var(--dark-bg)),
+        /* Elementos de forma abstrata com cores neon suaves */
+        radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 90% 70%, rgba(0, 217, 255, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(0, 255, 127, 0.15) 0%, transparent 30%);
+      z-index: -2;
+    }
+    
+    /* Efeito de partículas */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 15s infinite linear;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      50% {
+        transform: translateY(-20px) translateX(20px);
+      }
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Header */
+    header {
+      background: linear-gradient(to bottom, rgba(10, 14, 26, 0.8), transparent);
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+    }
+    
+    .neon-shadow-purple {
+      text-shadow: 
+        0 0 5px var(--neon-purple),
+        0 0 10px var(--neon-purple),
+        0 0 20px var(--neon-purple);
+    }
+    
+    .neon-shadow-blue {
+      text-shadow: 
+        0 0 5px var(--neon-blue),
+        0 0 10px var(--neon-blue),
+        0 0 20px var(--neon-blue);
+    }
+    
+    .neon-shadow-green {
+      text-shadow: 
+        0 0 5px var(--neon-green),
+        0 0 10px var(--neon-green),
+        0 0 20px var(--neon-green);
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 15px;
+      color: white;
+    }
+    
+    .tagline {
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      font-weight: 500;
+      color: white;
+    }
+    
+    .contact-info {
+      margin-top: 30px;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .contact-info i {
+      margin-right: 8px;
+    }
+    
+    /* Botão de download */
+    .download-btn {
+      background: transparent;
+      color: white;
+      padding: 12px 28px;
+      border: 2px solid var(--neon-green);
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      box-shadow: 
+        0 0 5px var(--neon-green),
+        0 0 10px var(--neon-green),
+        inset 0 0 5px var(--neon-green);
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+      font-family: 'Poppins', sans-serif;
+      z-index: 10;
+    }
+    
+    .download-btn:hover {
+      background: rgba(0, 255, 127, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 
+        0 0 15px var(--neon-green),
+        0 0 30px var(--neon-green),
+        inset 0 0 10px var(--neon-green);
+    }
+    
+    /* Seções */
+    section {
+      padding: 60px 0;
+      position: relative;
+    }
+    
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 5%;
+      right: 5%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--neon-purple), transparent);
+    }
+    
+    h2 {
+      font-size: 2.3rem;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+      color: white;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(to right, var(--neon-purple), var(--neon-blue), var(--neon-green));
+      border-radius: 3px;
+    }
+    
+    /* Cards */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(168, 85, 247, 0.2);
+    }
+    
+    /* Sobre mim */
+    .about-content {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    .about-text {
+      flex: 2;
+    }
+    
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 25px;
+    }
+    
+    .keyword {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      border: 1px solid;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      color: white;
+    }
+    
+    .keyword:nth-child(3n+1) {
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 5px var(--neon-purple);
+    }
+    
+    .keyword:nth-child(3n+2) {
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 5px var(--neon-blue);
+    }
+    
+    .keyword:nth-child(3n+3) {
+      border-color: var(--neon-green);
+      box-shadow: 0 0 5px var(--neon-green);
+    }
+    
+    .keyword:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px currentColor;
+    }
+    
+    /* Experiência */
+    .job {
+      margin-bottom: 40px;
+    }
+    
+    .job h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+    
+    .job-period {
+      color: var(--neon-blue);
+      font-style: italic;
+      margin-bottom: 20px;
+      display: block;
+    }
+    
+    .job ul {
+      padding-left: 20px;
+    }
+    
+    .job li {
+      margin-bottom: 12px;
+      position: relative;
+    }
+    
+    .job li::before {
+      content: '▹';
+      color: var(--neon-green);
+      position: absolute;
+      left: -20px;
+    }
+    
+    /* Habilidades */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    
+    .skill-category {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+    
+    .skill-category h3 {
+      color: var(--neon-blue);
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid;
+      border-image: linear-gradient(to right, var(--neon-purple), transparent) 1;
+    }
+    
+    .skill-category ul {
+      list-style-type: none;
+    }
+    
+    .skill-category li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+    }
+    
+    .skill-category li:last-child {
+      border-bottom: none;
+    }
+    
+    .skill-category li::before {
+      content: '•';
+      color: var(--neon-green);
+      font-size: 1.5rem;
+      margin-right: 10px;
+    }
+    
+    /* Projetos */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    .project {
+      background: var(--card-bg);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(0, 217, 255, 0.3);
+    }
+    
+    .project-content {
+      padding: 25px;
+    }
+    
+    .project h3 {
+      color: var(--neon-blue);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+    
+    .project p {
+      color: #cbd5e1;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .tech-tag {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid var(--neon-purple);
+      color: white;
+      font-weight: 500;
+      box-shadow: 0 0 5px var(--neon-purple);
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 50px 0;
+      position: relative;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--neon-blue), transparent);
+    }
+    
+    .social-links {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    
+    .social-links a {
+      color: var(--text-color);
+      font-size: 1.8rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--neon-green);
+      text-shadow: 0 0 10px var(--neon-green);
+      transform: translateY(-3px);
+    }
+    
+    /* Responsividade */
+    @media (max-width: 992px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      
+      .tagline {
+        font-size: 1.3rem;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .download-btn {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 30px;
+        display: inline-block;
+      }
+      
+      header {
+        padding: 60px 0 40px;
+      }
+      
+      h1 {
+        font-size: 2.3rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Efeito de partículas no background -->
+  <div class="particles" id="particles"></div>
+  
+  <div class="container">
+    <header>
+      <a href="curriculo_erick_zaratini.pdf" download class="download-btn"><i class="fas fa-download"></i> Baixar Currículo</a>
+      <h1 class="neon-shadow-purple">Erick Zaratini da Crus</h1>
+      <p class="tagline neon-shadow-blue">Desenvolvedor em Formação & Analista de Dados</p>
+      <div class="contact-info">
+        <span><i class="fas fa-car"></i> CNH: B</span>
+        <span><i class="fas fa-phone"></i> (11) 98887-2334</span>
+        <span><i class="fas fa-envelope"></i> zaratinidacrus@gmail.com</span>
+      </div>
+    </header>
+
+    <section class="about">
+      <h2 class="neon-shadow-blue">Sobre Mim</h2>
+      <div class="glass-card">
+        <div class="about-content">
+          <div class="about-text">
+            <p>Profissional com experiência em e-commerce e vendas, em transição para a área de Tecnologia da Informação, com foco em Análise de Dados, Business Intelligence e Inteligência Artificial. Possuo sólida experiência em gestão de informações, resolução de problemas e implementação de soluções digitais, com grande capacidade de aprendizado e aplicação prática de tecnologias emergentes.</p>
+            
+            <div class="keywords">
+              <span class="keyword">Transformação Digital</span>
+              <span class="keyword">Análise de Dados</span>
+              <span class="keyword">Business Intelligence</span>
+              <span class="keyword">Python</span>
+              <span class="keyword">SQL</span>
+              <span class="keyword">Power BI</span>
+              <span class="keyword">Machine Learning</span>
+              <span class="keyword">Otimização de Processos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience">
+      <h2 class="neon-shadow-green">Experiência Profissional</h2>
+      
+      <div class="glass-card">
+        <div class="job">
+          <h3 class="neon-shadow-purple">Loja Estrela do Lar - Operador de Loja / Estoquista</h3>
+          <span class="job-period">2023 - Presente</span>
+          <ul>
+            <li>Gerenciamento de estoque com controle sistemático de entradas e saídas, implementando planilhas automatizadas</li>
+            <li>Otimização de vendas online através de análise de dados de desempenho de produtos</li>
+            <li>Atendimento ao cliente com foco na resolução de problemas e coleta de feedback para melhorias processuais</li>
+            <li>Organização de produtos utilizando metodologias de classificação e catalogação eficientes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="glass-card">
+        <div class="job">
+          <h3 class="neon-shadow-purple">Yellow Toys Magazine - Gestor de E-commerce</h3>
+          <span class="job-period">2021 - 2023</span>
+          <ul>
+            <li>Gestão completa do e-commerce com foco em marketplaces (Mercado Livre, B2B, Americanas, Shopee)</li>
+            <li>Análise de métricas de vendas e desempenho de produtos para tomada de decisões estratégicas</li>
+            <li>Criação e otimização de anúncios com testes A/B para maximizar conversões</li>
+            <li>Implementação de processos de manutenção de estoque integrado entre plataformas</li>
+            <li>Edição de imagens e conteúdo para otimização de conversão e experiência do usuário</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="education">
+      <h2 class="neon-shadow-blue">Formação Acadêmica</h2>
+      <div class="glass-card">
+        <h3 class="neon-shadow-green">Ensino Médio Completo</h3>
+        <p>Allyrio de Figueiredo Brasil</p>
+      </div>
+      
+      <h2 class="neon-shadow-green" style="margin-top: 60px;">Cursos e Certificações</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3 class="neon-shadow-blue">Tecnologia & Análise de Dados</h3>
+          <ul>
+            <li>Excel Intermediário - Senar Play</li>
+            <li>Python para Data Science - Coursera (em andamento)</li>
+            <li>Fundamentos de Business Intelligence - Udemy (em andamento)</li>
+            <li>Introdução a SQL - Digital Innovation One</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3 class="neon-shadow-blue">Marketing Digital</h3>
+          <ul>
+            <li>Marketing Digital Mobile - Social Mídias - FIAP ON</li>
+            <li>Gestão de Tráfego e Anúncios - Facebook Blueprint</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3 class="neon-shadow-blue">Idiomas</h3>
+          <ul>
+            <li>Inglês Básico - CNA</li>
+            <li>Inglês Técnico para TI - Curso em andamento</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills">
+      <h2 class="neon-shadow-purple">Habilidades Técnicas</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3 class="neon-shadow-blue">Análise de Dados</h3>
+          <ul>
+            <li>Excel Intermediário (Fórmulas, Tabelas Dinâmicas, Gráficos)</li>
+            <li>Visualização de Dados (Power BI, Tableau - Básico)</li>
+            <li>Análise Estatística Descritiva</li>
+            <li>Manipulação de Dados</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3 class="neon-shadow-blue">Tecnologia & Programação</h3>
+          <ul>
+            <li>Python (Básico)</li>
+            <li>SQL (Básico)</li>
+            <li>Noções de Machine Learning</li>
+            <li>Git e GitHub</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3 class="neon-shadow-blue">E-commerce & Marketing Digital</h3>
+          <ul>
+            <li>Gestão de Marketplaces (Mercado Livre, B2B, Americanas, Shopee)</li>
+            <li>Gestão de Redes Sociais</li>
+            <li>Criação de Conteúdo e Edição de Imagens/Vídeos</li>
+            <li>Análise de Métricas de Performance</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3 class="neon-shadow-blue">Competências Transversais</h3>
+          <ul>
+            <li>Resolução de Problemas</li>
+            <li>Gestão de Projetos</li>
+            <li>Organização e Controle de Estoque</li>
+            <li>Atendimento ao Cliente</li>
+            <li>Capacidade Analítica</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects">
+      <h2 class="neon-shadow-green">Projetos em Destaque</h2>
+      <div class="projects-grid">
+        <div class="project">
+          <div class="project-content">
+            <h3 class="neon-shadow-blue">Análise de Vendas E-commerce</h3>
+            <p>Dashboard interativo criado no Excel para análise de desempenho de vendas em marketplaces, identificando produtos mais rentáveis e sazonais.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Excel</span>
+              <span class="tech-tag">Análise de Dados</span>
+              <span class="tech-tag">Dashboard</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project">
+          <div class="project-content">
+            <h3 class="neon-shadow-blue">Otimização de Estoque</h3>
+            <p>Sistema de controle de inventário com indicadores de giro de mercadoria e alertas de reposição baseado em planilhas automatizadas.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Excel</span>
+              <span class="tech-tag">Gestão</span>
+              <span class="tech-tag">Otimização</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project">
+          <div class="project-content">
+            <h3 class="neon-shadow-blue">Análise de Performance de Anúncios</h3>
+            <p>Relatório analítico comparando performance de diferentes anúncios e estratégias de pricing para maximizar conversões.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Marketing</span>
+              <span class="tech-tag">Métricas</span>
+              <span class="tech-tag">Análise</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Disponível para oportunidades em Análise de Dados, Business Intelligence e áreas correlatas de TI</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/erickzaratini/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/ErickZaratini" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/erick.zaratini" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:zaratinidacrus@gmail.com" title="E-mail"><i class="fas fa-envelope"></i></a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Criar partículas para o background
+    document.addEventListener('DOMContentLoaded', function() {
+      const particlesContainer = document.getElementById('particles');
+      const colors = ['#a855f7', '#00d9ff', '#00ff7f'];
+      
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Tamanho aleatório
+        const size = Math.random() * 5 + 2;
+        
+        // Posição aleatória
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        
+        // Cor aleatória
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Atrasar a animação para criar movimento aleatório
+        const delay = Math.random() * 15;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.background = color;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.opacity = Math.random() * 0.4 + 0.1;
+        
+        particlesContainer.appendChild(particle);
+      }
+      
+      // Criar um currículo PDF em base64 (fictício para demonstração)
+      const createFakePDF = function() {
+        // Em um cenário real, você teria um PDF real para disponibilizar
+        // Esta é apenas uma demonstração de como poderia ser implementado
+        console.log("Funcionalidade de download de currículo ativada");
+        // Aqui você poderia adicionar um evento para rastrear downloads
+      };
+      
+      // Adicionar evento ao botão de download
+      document.querySelector('.download-btn').addEventListener('click', createFakePDF);
+    });
+  </script>
+</body>
+</html>
